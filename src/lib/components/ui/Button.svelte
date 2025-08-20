@@ -13,7 +13,7 @@
   } = $props();
 
   // Build custom classes for our opinionated styling
-  const customClasses = $derived(buildButtonClasses({ variant, size, fullWidth }));
+  const customClasses = $derived(buildButtonClasses({ variant, size, fullWidth, disabled }));
 </script>
 
 <FlowbiteButton {disabled} class={customClasses} {...rest}>

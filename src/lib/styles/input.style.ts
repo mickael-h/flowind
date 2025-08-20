@@ -17,10 +17,11 @@ export const inputStyles = {
   // Variant-specific overrides for colors
   variants: {
     default:
-      '!border-gray-300 !bg-white !text-gray-900 focus:!border-primary-500 focus:!ring-primary-200',
+      '!border-gray-300 !bg-white !text-gray-900 focus:!border-primary-500 focus:!ring-primary-200 dark:!border-gray-600 dark:!bg-gray-700 dark:!text-white dark:focus:!border-primary-400 dark:focus:!ring-primary-900/20',
     success:
-      '!border-green-300 !bg-white !text-gray-900 focus:!border-green-500 focus:!ring-green-200',
-    error: '!border-red-300 !bg-white !text-gray-900 focus:!border-red-500 focus:!ring-red-200'
+      '!border-green-300 !bg-white !text-gray-900 focus:!border-green-500 focus:!ring-green-200 dark:!border-green-600 dark:!bg-gray-700 dark:!text-white dark:focus:!border-green-400 dark:focus:!ring-green-900/20',
+    error:
+      '!border-red-300 !bg-white !text-gray-900 focus:!border-red-500 focus:!ring-red-200 dark:!border-red-600 dark:!bg-gray-700 dark:!text-white dark:focus:!border-red-400 dark:focus:!ring-red-900/20'
   },
 
   // Size overrides
@@ -33,14 +34,14 @@ export const inputStyles = {
   },
 
   // Label styles
-  label: 'block text-sm font-medium text-gray-700 mb-1',
-  labelRequired: 'text-error-600',
+  label: 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1',
+  labelRequired: 'text-error-600 dark:text-error-400',
 
   // Helper text styles
   helper: 'mt-1 text-sm',
-  helperSuccess: 'text-success-600',
-  helperError: 'text-error-600',
-  helperDefault: 'text-gray-500',
+  helperSuccess: 'text-success-600 dark:text-success-400',
+  helperError: 'text-error-600 dark:text-error-400',
+  helperDefault: 'text-gray-500 dark:text-gray-400',
 
   // Input group styles
   group: 'flex',

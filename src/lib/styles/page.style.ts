@@ -21,10 +21,10 @@ export const pageStyles = {
   hero: {
     container:
       'from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 bg-gradient-to-br py-20',
-    content: 'text-center',
+    content: 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center',
     title: 'font-display mb-6 text-4xl font-bold text-gray-900 dark:text-white md:text-6xl',
     description: 'mx-auto mb-8 max-w-3xl text-xl text-gray-600 dark:text-gray-300',
-    actions: 'flex flex-col justify-center gap-4 sm:flex-row'
+    actions: 'flex flex-col justify-center gap-4 sm:flex-row mt-12'
   },
 
   // Section styles
@@ -43,6 +43,19 @@ export const pageStyles = {
     grid: 'grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6',
     colorItem: 'space-y-2',
     colorSwatch: 'h-16 rounded-lg shadow-sm',
+    colorSwatchPrimary: 'h-16 rounded-lg shadow-sm bg-primary-500',
+    colorSwatchSecondary: 'h-16 rounded-lg shadow-sm bg-secondary-500',
+    colorSwatchAccent: 'h-16 rounded-lg shadow-sm bg-accent-500',
+    colorSwatchSuccess: 'h-16 rounded-lg shadow-sm bg-success-500',
+    colorSwatchWarning: 'h-16 rounded-lg shadow-sm bg-warning-500',
+    colorSwatchError: 'h-16 rounded-lg shadow-sm bg-error-500',
+    // Dark mode color swatches
+    colorSwatchPrimaryDark: 'h-16 rounded-lg shadow-sm bg-primary-400',
+    colorSwatchSecondaryDark: 'h-16 rounded-lg shadow-sm bg-secondary-400',
+    colorSwatchAccentDark: 'h-16 rounded-lg shadow-sm bg-accent-400',
+    colorSwatchSuccessDark: 'h-16 rounded-lg shadow-sm bg-success-400',
+    colorSwatchWarningDark: 'h-16 rounded-lg shadow-sm bg-warning-400',
+    colorSwatchErrorDark: 'h-16 rounded-lg shadow-sm bg-error-400',
     colorName: 'text-sm font-medium text-gray-900 dark:text-white',
     colorHex: 'text-xs text-gray-500 dark:text-gray-400'
   },
@@ -84,6 +97,43 @@ export const pageStyles = {
   // Form styles
   form: {
     actions: 'flex gap-4'
+  },
+
+  // Modal showcase styles
+  modalShowcase: {
+    // Modal content styles
+    content: 'space-y-4',
+    warningBox: 'flex items-center gap-3 rounded-lg bg-gray-50 p-3 dark:bg-gray-700',
+    warningIcon: 'h-2 w-2 rounded-full bg-yellow-500',
+    infoBox:
+      'rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20',
+
+    // Modal footer styles
+    footer: 'flex justify-end gap-3',
+
+    // Modal grid styles
+    grid: 'grid grid-cols-2 gap-4',
+    gridItem: 'space-y-2',
+    list: 'space-y-1 text-sm text-gray-600 dark:text-gray-400',
+
+    // Button container styles
+    buttonContainer: 'flex flex-wrap gap-3',
+
+    // Card spacing
+    card: 'mb-8 last:mb-0'
+  },
+
+  // Tabs showcase styles
+  tabsShowcase: {
+    // Tab content styles
+    content: 'space-y-4',
+    contentBox: 'rounded-lg bg-gray-50 p-4 dark:bg-gray-700',
+    list: 'list-inside list-disc space-y-2',
+
+    // Tab grid styles
+    grid: 'grid grid-cols-2 gap-4',
+    primaryBox: 'rounded bg-primary-50 p-3 dark:bg-primary-900/20',
+    secondaryBox: 'rounded bg-secondary-50 p-3 dark:bg-secondary-900/20'
   },
 
   // Footer styles
