@@ -68,22 +68,26 @@ export const accordionStyles = {
       last:border-b-0
     `
       .replace(/\s+/g, ' ')
-      .trim(),
+      .trim()
+  },
 
-    // Arrow/chevron icon
+  // Content styles
+  content: {
     arrow: `
-      w-5 h-5
-      text-gray-500 dark:text-gray-400
-      transition-transform duration-200
-      group-hover:text-gray-700 dark:group-hover:text-gray-200
+      mr-3 
+      h-3 
+      w-3 
+      text-gray-900 
+      transition-transform 
+      duration-200 
+      dark:text-white
     `
       .replace(/\s+/g, ' ')
       .trim(),
 
-    // Arrow when item is open
-    arrowOpen: `
-      transform rotate-180
-      text-primary-600 dark:text-primary-400
+    title: `
+      flex-1 
+      text-left
     `
       .replace(/\s+/g, ' ')
       .trim()
@@ -128,22 +132,17 @@ export function buildAccordionClasses({
 // Helper function to build accordion item classes
 export function buildAccordionItemClasses({
   isOpen = false,
-  flush = false,
   arrowPosition = 'right'
 }: {
   isOpen?: boolean;
-  flush?: boolean;
   arrowPosition?: 'left' | 'right';
 } = {}) {
   const headerClasses =
     `${accordionStyles.item.header} ${isOpen ? accordionStyles.item.headerActive : ''} ${arrowPosition === 'left' ? '[&>svg:last-child]:hidden' : ''}`.trim();
-  const arrowClasses =
-    `${accordionStyles.item.arrow} ${isOpen ? accordionStyles.item.arrowOpen : ''} ${arrowPosition === 'left' ? 'order-1 mr-3' : ''}`.trim();
 
   return {
     item: accordionStyles.item.base,
     header: headerClasses,
-    content: accordionStyles.item.content,
-    arrow: arrowClasses
+    content: accordionStyles.item.content
   };
 }

@@ -6,6 +6,7 @@
   import {
     buildAccordionClasses,
     buildAccordionItemClasses,
+    accordionStyles,
     type AccordionVariant
   } from '$lib/styles/accordion.style';
   import type { Snippet } from 'svelte';
@@ -45,27 +46,12 @@
       {} as Record<string, boolean>
     )
   );
-
-  // Handle accordion item toggle
-  function handleToggle(itemId: string) {
-    if (multiple) {
-      // Allow multiple items to be open
-      openStates[itemId] = !openStates[itemId];
-    } else {
-      // Single selection: close all others when opening one
-      const newStates: Record<string, boolean> = {};
-      for (const item of items) {
-        newStates[item.id] = item.id === itemId ? !openStates[itemId] : false;
-      }
-      openStates = newStates;
-    }
-  }
 </script>
 
 <FlowbiteAccordion {multiple} {flush} class={customClasses} {...rest}>
   {#each items as item (item.id)}
     {@const isOpen = openStates[item.id]}
-    {@const itemClasses = buildAccordionItemClasses({ isOpen, flush, arrowPosition })}
+    {@const itemClasses = buildAccordionItemClasses({ isOpen, arrowPosition })}
 
     <FlowbiteAccordionItem
       bind:open={openStates[item.id]}
@@ -78,9 +64,7 @@
       {#snippet header()}
         {#if arrowPosition === 'left'}
           <svg
-            class="mr-3 h-3 w-3 text-gray-900 transition-transform duration-200 dark:text-white {isOpen
-              ? 'rotate-180'
-              : ''}"
+            class="{accordionStyles.content.arrow} {isOpen ? 'rotate-180' : ''}"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -95,7 +79,7 @@
             />
           </svg>
         {/if}
-        <span class="flex-1 text-left">{item.title}</span>
+        <span class={accordionStyles.content.title}>{item.title}</span>
       {/snippet}
 
       {@render item.content()}

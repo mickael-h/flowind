@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
   import {
     Button,
     Card,
@@ -8,25 +9,26 @@
     Tabs,
     Modal,
     Text,
-    Accordion
+    Accordion,
+    Table
   } from '$lib/components/ui';
+  import type { TableRow } from '$lib/components/ui/Table.svelte';
   import { pageStyles } from '$lib/styles/page.style';
 
   // Handler for badge removal
   function handleBadgeRemove() {
-    console.log('Badge removed');
+    // Badge removed
   }
 
   // Handler for form submission
-  function handleFormSubmit(formData: FormData) {
-    console.log('Form submitted:', Object.fromEntries(formData));
+  function handleFormSubmit(_formData: FormData) {
+    // Form submitted with data: Object.fromEntries(formData)
   }
 
   // Modal state management
   let defaultModalOpen = $state(false);
   let sizeModalOpen = $state(false);
   let positionModalOpen = $state(false);
-  let testModalOpen = $state(false);
 
   // Dark mode toggle
   let isDarkMode = $state(false);
@@ -43,7 +45,7 @@
           const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
           isDarkMode = systemPrefersDark;
         }
-      } catch (error) {
+      } catch (_error) {
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         isDarkMode = systemPrefersDark;
       }
@@ -67,11 +69,202 @@
     isDarkMode = !isDarkMode;
     try {
       localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-    } catch (error) {
+    } catch (_error) {
       // Continue without localStorage if it fails
-      console.warn('Failed to save dark mode preference:', error);
     }
   }
+
+  // Table demo data
+  const tableColumns = [
+    { key: 'name', label: 'Name', sortable: true, width: '40%' },
+    { key: 'type', label: 'Type', sortable: true, width: '25%' },
+    { key: 'size', label: 'Size', sortable: true, width: '15%' },
+    { key: 'modified', label: 'Modified', sortable: true, width: '20%' }
+  ];
+
+  const tableRows: TableRow[] = [
+    {
+      id: '1',
+      type: 'folder',
+      data: {
+        name: 'Documents',
+        type: 'Folder',
+        size: '—',
+        modified: '2024-01-16'
+      },
+      expanded: false,
+      children: [
+        {
+          id: '1-1',
+          type: 'file',
+          data: {
+            name: 'project-docs.pdf',
+            fileType: 'PDF Document',
+            size: '2.3 MB',
+            modified: '2024-01-15'
+          },
+          expandedContent: pdfDetailsContent
+        },
+        {
+          id: '1-2',
+          type: 'file',
+          data: {
+            name: 'user-guide.pdf',
+            type: 'PDF Document',
+            size: '1.8 MB',
+            modified: '2024-01-14'
+          }
+        }
+      ]
+    },
+    {
+      id: '2',
+      type: 'folder',
+      data: {
+        name: 'Design Files',
+        type: 'Folder',
+        size: '—',
+        modified: '2024-01-14'
+      },
+      expanded: false,
+      children: [
+        {
+          id: '2-1',
+          type: 'file',
+          data: {
+            name: 'design-system.figma',
+            type: 'Figma File',
+            size: '8.7 MB',
+            modified: '2024-01-14'
+          },
+          expandedContent: figmaDetailsContent
+        },
+        {
+          id: '2-2',
+          type: 'file',
+          data: {
+            name: 'wireframes.sketch',
+            type: 'Sketch File',
+            size: '4.2 MB',
+            modified: '2024-01-13'
+          }
+        }
+      ]
+    },
+    {
+      id: '3',
+      type: 'folder',
+      data: {
+        name: 'Source Code',
+        type: 'Folder',
+        size: '—',
+        modified: '2024-01-16'
+      },
+      expanded: false,
+      children: [
+        {
+          id: '3-1',
+          type: 'folder',
+          data: {
+            name: 'src',
+            type: 'Folder',
+            size: '—',
+            modified: '2024-01-16'
+          },
+          expanded: false,
+          children: [
+            {
+              id: '3-1-1',
+              type: 'folder',
+              data: {
+                name: 'components',
+                type: 'Folder',
+                size: '—',
+                modified: '2024-01-15'
+              },
+              expanded: false,
+              children: [
+                {
+                  id: '3-1-1-1',
+                  type: 'file',
+                  data: {
+                    name: 'Table.svelte',
+                    type: 'Svelte Component',
+                    size: '8.5 KB',
+                    modified: '2024-01-16'
+                  }
+                },
+                {
+                  id: '3-1-1-2',
+                  type: 'file',
+                  data: {
+                    name: 'Modal.svelte',
+                    type: 'Svelte Component',
+                    size: '3.2 KB',
+                    modified: '2024-01-14'
+                  }
+                }
+              ]
+            },
+            {
+              id: '3-1-2',
+              type: 'folder',
+              data: {
+                name: 'styles',
+                type: 'Folder',
+                size: '—',
+                modified: '2024-01-15'
+              },
+              expanded: false,
+              children: [
+                {
+                  id: '3-1-2-1',
+                  type: 'file',
+                  data: {
+                    name: 'table.style.ts',
+                    type: 'TypeScript',
+                    size: '1.8 KB',
+                    modified: '2024-01-16'
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: '3-2',
+          type: 'file',
+          data: {
+            name: 'package.json',
+            type: 'JSON File',
+            size: '1.2 KB',
+            modified: '2024-01-13'
+          },
+          expandedContent: packageDetailsContent
+        },
+        {
+          id: '3-3',
+          type: 'file',
+          data: {
+            name: 'README.md',
+            type: 'Markdown',
+            size: '4.5 KB',
+            modified: '2024-01-16'
+          }
+        }
+      ]
+    },
+    {
+      id: '4',
+      type: 'file',
+      data: {
+        name: 'LICENSE',
+        type: 'Text File',
+        size: '1.1 KB',
+        modified: '2024-01-10'
+      }
+    }
+  ];
 </script>
 
 {#snippet tabOneContent()}
@@ -143,6 +336,27 @@
 {#snippet tipTwoContent()}
   <Text variant="body" color="secondary">
     Follow our component guidelines and design patterns for consistent user experiences.
+  </Text>
+{/snippet}
+
+{#snippet pdfDetailsContent()}
+  <Text variant="body" color="secondary">
+    This PDF contains comprehensive project documentation including technical specifications, user
+    guides, and API references.
+  </Text>
+{/snippet}
+
+{#snippet figmaDetailsContent()}
+  <Text variant="body" color="secondary">
+    Design file with all UI components, color schemes, typography definitions, and design tokens
+    used in the Flowind design system.
+  </Text>
+{/snippet}
+
+{#snippet packageDetailsContent()}
+  <Text variant="body" color="secondary">
+    Configuration file containing project dependencies, scripts, and metadata for the npm package
+    manager.
   </Text>
 {/snippet}
 
@@ -520,6 +734,23 @@
         </Card>
       </div>
 
+      <!-- Tables -->
+      <div class={pageStyles.componentShowcase.container}>
+        <Text variant="h4" as="h4">Tables</Text>
+        <Card variant="elevated" padding="lg">
+          <div class={pageStyles.componentShowcase.card}>
+            <div class={pageStyles.componentShowcase.section}>
+              <Text variant="h5" as="h5">File Explorer Style</Text>
+              <Text variant="body" color="secondary">
+                A table component inspired by Windows File Explorer with sortable columns and
+                expandable rows for additional details.
+              </Text>
+              <Table columns={tableColumns} rows={tableRows} expandable={true} sortable={true} />
+            </div>
+          </div>
+        </Card>
+      </div>
+
       <!-- Modals -->
       <div class={pageStyles.componentShowcase.container}>
         <Text variant="h4" as="h4">Modals</Text>
@@ -549,61 +780,6 @@
             </div>
           </div>
         </Card>
-
-        <!-- Modal Components -->
-        <Modal bind:open={defaultModalOpen} title="Sample Modal">
-          {#snippet body()}
-            <Text variant="body" color="secondary">
-              This is a default modal with standard styling. You can close it by clicking the X
-              button, pressing Escape, or clicking outside the modal.
-            </Text>
-          {/snippet}
-          {#snippet footer()}
-            <Button variant="secondary" onclick={() => (defaultModalOpen = false)}>Cancel</Button>
-            <Button onclick={() => (defaultModalOpen = false)}>Confirm</Button>
-          {/snippet}
-        </Modal>
-
-        <Modal bind:open={sizeModalOpen} size="lg" title="Large Modal">
-          {#snippet body()}
-            <div class="space-y-4">
-              <Text variant="body" color="secondary">
-                This is a large modal that provides more space for complex content, forms, or data
-                displays.
-              </Text>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="rounded bg-gray-100 p-4 dark:bg-gray-700">
-                  <Text variant="h6" color="primary">Feature One</Text>
-                  <Text variant="body" color="secondary">
-                    Large modals are perfect for detailed content.
-                  </Text>
-                </div>
-                <div class="rounded bg-gray-100 p-4 dark:bg-gray-700">
-                  <Text variant="h6" color="primary">Feature Two</Text>
-                  <Text variant="body" color="secondary">
-                    They provide enough space for multiple sections.
-                  </Text>
-                </div>
-              </div>
-            </div>
-          {/snippet}
-          {#snippet footer()}
-            <Button variant="secondary" onclick={() => (sizeModalOpen = false)}>Close</Button>
-            <Button onclick={() => (sizeModalOpen = false)}>Save Changes</Button>
-          {/snippet}
-        </Modal>
-
-        <Modal bind:open={positionModalOpen} position="top" title="Top Position Modal">
-          {#snippet body()}
-            <Text variant="body" color="secondary">
-              This modal is positioned at the top of the screen instead of the center. Different
-              positions can be useful for different use cases and user flows.
-            </Text>
-          {/snippet}
-          {#snippet footer()}
-            <Button variant="accent" onclick={() => (positionModalOpen = false)}>Got it!</Button>
-          {/snippet}
-        </Modal>
       </div>
     </div>
   </section>
@@ -625,3 +801,57 @@
     </div>
   </footer>
 </div>
+
+<!-- Modal Components - Placed outside main container to avoid positioning conflicts -->
+<Modal bind:open={defaultModalOpen} title="Sample Modal">
+  {#snippet body()}
+    <Text variant="body" color="secondary">
+      This is a default modal with standard styling. You can close it by clicking the X button,
+      pressing Escape, or clicking outside the modal.
+    </Text>
+  {/snippet}
+  {#snippet footer()}
+    <Button variant="secondary" onclick={() => (defaultModalOpen = false)}>Cancel</Button>
+    <Button onclick={() => (defaultModalOpen = false)}>Confirm</Button>
+  {/snippet}
+</Modal>
+
+<Modal bind:open={sizeModalOpen} size="lg" title="Large Modal">
+  {#snippet body()}
+    <div class="space-y-4">
+      <Text variant="body" color="secondary">
+        This is a large modal that provides more space for complex content, forms, or data displays.
+      </Text>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="rounded bg-gray-100 p-4 dark:bg-gray-700">
+          <Text variant="h6" color="primary">Feature One</Text>
+          <Text variant="body" color="secondary">
+            Large modals are perfect for detailed content.
+          </Text>
+        </div>
+        <div class="rounded bg-gray-100 p-4 dark:bg-gray-700">
+          <Text variant="h6" color="primary">Feature Two</Text>
+          <Text variant="body" color="secondary">
+            They provide enough space for multiple sections.
+          </Text>
+        </div>
+      </div>
+    </div>
+  {/snippet}
+  {#snippet footer()}
+    <Button variant="secondary" onclick={() => (sizeModalOpen = false)}>Close</Button>
+    <Button onclick={() => (sizeModalOpen = false)}>Save Changes</Button>
+  {/snippet}
+</Modal>
+
+<Modal bind:open={positionModalOpen} position="top" title="Top Position Modal">
+  {#snippet body()}
+    <Text variant="body" color="secondary">
+      This modal is positioned at the top of the screen instead of the center. Different positions
+      can be useful for different use cases and user flows.
+    </Text>
+  {/snippet}
+  {#snippet footer()}
+    <Button variant="accent" onclick={() => (positionModalOpen = false)}>Got it!</Button>
+  {/snippet}
+</Modal>

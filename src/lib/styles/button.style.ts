@@ -19,14 +19,15 @@ export const buttonStyles = {
 
   // Variant-specific overrides for colors
   variants: {
-    primary: '!bg-blue-600 !text-white hover:!bg-blue-700 focus:!ring-blue-300',
-    secondary: '!bg-gray-600 !text-white hover:!bg-gray-700 focus:!ring-gray-300',
-    accent: '!bg-purple-600 !text-white hover:!bg-purple-700 focus:!ring-purple-300',
-    success: '!bg-green-600 !text-white hover:!bg-green-700 focus:!ring-green-300',
-    warning: '!bg-amber-600 !text-white hover:!bg-amber-700 focus:!ring-amber-300',
-    error: '!bg-red-600 !text-white hover:!bg-red-700 focus:!ring-red-300',
-    outline: '!border-2 !border-blue-600 !text-blue-600 hover:!bg-blue-50 focus:!ring-blue-300',
-    ghost: '!bg-transparent !text-blue-600 hover:!bg-blue-50 focus:!ring-blue-300'
+    primary: '!bg-primary-600 !text-white hover:!bg-primary-700 focus:!ring-primary-300',
+    secondary: '!bg-secondary-600 !text-white hover:!bg-secondary-700 focus:!ring-secondary-300',
+    accent: '!bg-accent-600 !text-white hover:!bg-accent-700 focus:!ring-accent-300',
+    success: '!bg-success-600 !text-white hover:!bg-success-700 focus:!ring-success-300',
+    warning: '!bg-warning-600 !text-white hover:!bg-warning-700 focus:!ring-warning-300',
+    error: '!bg-error-600 !text-white hover:!bg-error-700 focus:!ring-error-300',
+    outline:
+      '!border-2 !border-primary-600 !text-primary-600 hover:!bg-primary-50 focus:!ring-primary-300',
+    ghost: '!bg-transparent !text-primary-600 hover:!bg-primary-50 focus:!ring-primary-300'
   },
 
   // Size overrides to fix Flowbite's sizing issues
@@ -53,14 +54,10 @@ export const buttonStyles = {
 export function buildButtonClasses({
   variant = 'primary',
   size = 'md',
-  disabled = false,
-  loading = false,
   fullWidth = false
 }: {
   variant?: keyof typeof buttonStyles.variants;
   size?: keyof typeof buttonStyles.sizeOverrides;
-  disabled?: boolean;
-  loading?: boolean;
   fullWidth?: boolean;
 }) {
   const classes = [

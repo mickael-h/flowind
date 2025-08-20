@@ -29,18 +29,16 @@
     role="tablist"
     aria-orientation={position === 'left' || position === 'right' ? 'vertical' : 'horizontal'}
   >
-    {#each items as item}
-      {#key item.id}
-        <button
-          type="button"
-          role="tab"
-          aria-selected={currentActiveId === item.id}
-          class={buildTabButtonClasses({ position, active: currentActiveId === item.id })}
-          onclick={() => (activeId = item.id)}
-        >
-          {item.label}
-        </button>
-      {/key}
+    {#each items as item (item.id)}
+      <button
+        type="button"
+        role="tab"
+        aria-selected={currentActiveId === item.id}
+        class={buildTabButtonClasses({ position, active: currentActiveId === item.id })}
+        onclick={() => (activeId = item.id)}
+      >
+        {item.label}
+      </button>
     {/each}
   </div>
 

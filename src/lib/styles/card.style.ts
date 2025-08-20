@@ -17,8 +17,8 @@ export const cardStyles = {
       '!bg-white dark:!bg-gray-800 !border !border-gray-200 dark:!border-gray-700 hover:!shadow-md',
     elevated: '!bg-white dark:!bg-gray-800 !shadow-lg hover:!shadow-xl',
     outlined:
-      '!bg-transparent !border-2 !border-gray-300 dark:!border-gray-600 hover:!border-gray-400 dark:hover:!border-gray-500',
-    flat: '!bg-gray-50 dark:!bg-gray-700 !border-0 hover:!bg-gray-100 dark:hover:!bg-gray-600'
+      '!bg-transparent !border-2 !border-primary-300 dark:!border-primary-600 hover:!border-primary-400 dark:hover:!border-primary-500',
+    flat: '!bg-primary-50 dark:!bg-primary-900/20 !border-0 hover:!bg-primary-100 dark:hover:!bg-primary-900/40'
   },
 
   // Padding overrides

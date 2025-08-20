@@ -10,10 +10,10 @@ export const tabsStyles = {
   },
 
   tabList: {
-    top: 'flex items-center gap-2 border-b border-gray-200',
-    bottom: 'flex items-center gap-2 border-t border-gray-200 order-last',
-    left: 'flex flex-col gap-2 border-r border-gray-200',
-    right: 'flex flex-col gap-2 border-l border-gray-200 order-last'
+    top: 'flex items-center gap-2 border-b border-gray-200 dark:border-gray-700',
+    bottom: 'flex items-center gap-2 border-t border-gray-200 dark:border-gray-700 order-last',
+    left: 'flex flex-col gap-2 border-r border-gray-200 dark:border-gray-700',
+    right: 'flex flex-col gap-2 border-l border-gray-200 dark:border-gray-700 order-last'
   },
 
   panel: 'p-4',
@@ -23,20 +23,28 @@ export const tabsStyles = {
   buttonVariants: {
     // Active/inactive appearance adjusted per position for borders
     top: {
-      active: 'text-primary-600 border-b-2 border-primary-600',
-      inactive: 'text-gray-600 hover:text-gray-900 border-b-2 border-transparent'
+      active:
+        'text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400',
+      inactive:
+        'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 border-b-2 border-transparent'
     },
     bottom: {
-      active: 'text-primary-600 border-t-2 border-primary-600',
-      inactive: 'text-gray-600 hover:text-gray-900 border-t-2 border-transparent'
+      active:
+        'text-primary-600 dark:text-primary-400 border-t-2 border-primary-600 dark:border-primary-400',
+      inactive:
+        'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 border-t-2 border-transparent'
     },
     left: {
-      active: 'text-primary-600 border-r-2 border-primary-600',
-      inactive: 'text-gray-600 hover:text-gray-900 border-r-2 border-transparent'
+      active:
+        'text-primary-600 dark:text-primary-400 border-r-2 border-primary-600 dark:border-primary-400',
+      inactive:
+        'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 border-r-2 border-transparent'
     },
     right: {
-      active: 'text-primary-600 border-l-2 border-primary-600',
-      inactive: 'text-gray-600 hover:text-gray-900 border-l-2 border-transparent'
+      active:
+        'text-primary-600 dark:text-primary-400 border-l-2 border-primary-600 dark:border-primary-400',
+      inactive:
+        'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 border-l-2 border-transparent'
     }
   }
 } as const;

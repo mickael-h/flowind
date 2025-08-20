@@ -8,3 +8,4 @@ export { default as Tabs } from './Tabs.svelte';
 export { default as Modal } from './Modal.svelte';
 export { default as Text } from './Text.svelte';
 export { default as Accordion } from './Accordion.svelte';
+export { default as Table } from './Table.svelte';

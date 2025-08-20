@@ -24,12 +24,13 @@ export const badgeStyles = {
 
   // Variant-specific colors to override Flowbite's defaults
   variants: {
-    primary: '!bg-blue-50 !text-blue-700 hover:!bg-blue-100 focus:ring-blue-500',
-    secondary: '!bg-gray-50 !text-gray-700 hover:!bg-gray-100 focus:ring-gray-500',
-    accent: '!bg-purple-50 !text-purple-700 hover:!bg-purple-100 focus:ring-purple-500',
-    success: '!bg-green-50 !text-green-700 hover:!bg-green-100 focus:ring-green-500',
-    warning: '!bg-amber-50 !text-amber-700 hover:!bg-amber-100 focus:ring-amber-500',
-    error: '!bg-red-50 !text-red-700 hover:!bg-red-100 focus:ring-red-500',
+    primary: '!bg-primary-50 !text-primary-700 hover:!bg-primary-100 focus:ring-primary-500',
+    secondary:
+      '!bg-secondary-50 !text-secondary-700 hover:!bg-secondary-100 focus:ring-secondary-500',
+    accent: '!bg-accent-50 !text-accent-700 hover:!bg-accent-100 focus:ring-accent-500',
+    success: '!bg-success-50 !text-success-700 hover:!bg-success-100 focus:ring-success-500',
+    warning: '!bg-warning-50 !text-warning-700 hover:!bg-warning-100 focus:ring-warning-500',
+    error: '!bg-error-50 !text-error-700 hover:!bg-error-100 focus:ring-error-500',
     info: '!bg-sky-50 !text-sky-700 hover:!bg-sky-100 focus:ring-sky-500'
   },
 

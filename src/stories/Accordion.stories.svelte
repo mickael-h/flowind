@@ -90,7 +90,7 @@ An accordion component that allows users to toggle content sections. Built on to
 {/snippet}
 
 {#snippet codeContent()}
-  <Text variant="code">const example = "This is some example code"; console.log(example);</Text>
+  <Text variant="code">const example = "This is some example code";</Text>
 {/snippet}
 
 {#snippet testContent()}

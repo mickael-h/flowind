@@ -1,8 +1,8 @@
 <script lang="ts">
   import { Modal as FlowbiteModal } from 'flowbite-svelte';
   import {
-    buildModalClasses,
     getFlowbitePlacement,
+    buildModalClasses,
     modalStyles,
     type ModalSize,
     type ModalPosition
@@ -19,8 +19,7 @@
     onClose,
     header,
     body,
-    footer,
-    ...rest
+    footer
   } = $props<{
     open?: boolean;
     size?: ModalSize;
@@ -33,11 +32,11 @@
     footer?: Snippet;
   }>();
 
-  // Build custom classes for our opinionated styling
-  const customClasses = $derived(buildModalClasses({ size, position }));
-
   // Get Flowbite placement from our position prop
   const flowbitePlacement = $derived(getFlowbitePlacement(position));
+
+  // Build modal classes for styling including our custom size overrides
+  const modalClasses = $derived(buildModalClasses({ size }));
 
   // Handle close functionality
   function handleClose() {
@@ -50,7 +49,15 @@
   }
 </script>
 
-<FlowbiteModal bind:open dismissable={false} outsideclose={closable} placement={flowbitePlacement}>
+<FlowbiteModal
+  bind:open
+  {size}
+  dismissable={false}
+  outsideclose={closable}
+  placement={flowbitePlacement}
+  class={modalClasses.content}
+  data-position={position}
+>
   <!-- Header -->
   {#if header || title}
     <div class={modalStyles.header}>

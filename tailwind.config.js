@@ -29,5 +29,14 @@ export default {
       }
     }
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')]
+  corePlugins: {
+    preflight: false
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    function ({ addVariant }) {
+      addVariant('dark', '&:where(.dark, .dark *)');
+    }
+  ]
 };

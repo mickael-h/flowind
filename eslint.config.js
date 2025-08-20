@@ -1,5 +1,6 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from 'eslint-plugin-storybook';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 import prettier from 'eslint-config-prettier';
 import { includeIgnoreFile } from '@eslint/compat';
@@ -26,7 +27,9 @@ export default ts.config(
     rules: {
       // typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
       // see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-      'no-undef': 'off'
+      'no-undef': 'off',
+      // Require curly braces for all control statements
+      curly: ['error', 'all']
     }
   },
   {
@@ -38,6 +41,37 @@ export default ts.config(
         parser: ts.parser,
         svelteConfig
       }
+    }
+  },
+  {
+    plugins: {
+      'unused-imports': unusedImports
+    },
+    rules: {
+      // Turn off the base rule in favor of TS-aware version
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          args: 'after-used',
+          ignoreRestSiblings: true,
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_'
+        }
+      ],
+
+      // Forbid unused imports
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_'
+        }
+      ]
     }
   },
   storybook.configs['flat/recommended']

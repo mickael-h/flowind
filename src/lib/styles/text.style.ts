@@ -48,7 +48,7 @@ export const textStyles = {
     primary: 'text-gray-900 dark:text-white',
     secondary: 'text-gray-600 dark:text-gray-400',
     muted: 'text-gray-500 dark:text-gray-500',
-    accent: 'text-blue-600 dark:text-blue-400',
+    accent: 'text-primary-600 dark:text-primary-400',
     success: 'text-green-600 dark:text-green-400',
     warning: 'text-orange-600 dark:text-orange-400',
     error: 'text-red-600 dark:text-red-400',

@@ -17,7 +17,7 @@ export const inputStyles = {
   // Variant-specific overrides for colors
   variants: {
     default:
-      '!border-gray-300 !bg-white !text-gray-900 focus:!border-blue-500 focus:!ring-blue-200',
+      '!border-gray-300 !bg-white !text-gray-900 focus:!border-primary-500 focus:!ring-primary-200',
     success:
       '!border-green-300 !bg-white !text-gray-900 focus:!border-green-500 focus:!ring-green-200',
     error: '!border-red-300 !bg-white !text-gray-900 focus:!border-red-500 focus:!ring-red-200'

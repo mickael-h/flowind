@@ -31,7 +31,7 @@
 
   // Handler for badge removal in stories
   function handleBadgeRemove() {
-    console.log('Badge removed from story');
+    // Badge removed from story
   }
 </script>
 

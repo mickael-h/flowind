@@ -11,7 +11,6 @@ export const modalStyles = {
     !backdrop-blur-sm 
     !transition-all 
     !duration-500 
-    !transform 
     hover:!scale-105
   `
     .replace(/\s+/g, ' ')
@@ -37,15 +36,6 @@ export const modalStyles = {
     lg: '!max-w-2xl !w-full',
     xl: '!max-w-4xl !w-full',
     full: '!max-w-full !w-full !mx-4'
-  },
-
-  // Position effects - let Flowbite handle positioning natively
-  positions: {
-    center: '',
-    top: '',
-    bottom: '',
-    left: '',
-    right: ''
   }
 };
 
@@ -78,16 +68,14 @@ export function getFlowbitePlacement(
 }
 
 export function buildModalClasses({
-  size = 'md',
-  position = 'center'
+  size = 'md'
 }: {
   size?: ModalSize;
-  position?: ModalPosition;
 } = {}) {
   const sizeClasses = modalStyles.sizes[size];
-  const positionClasses = modalStyles.positions[position];
+  // Position classes are not used here as positioning is handled by Flowbite's placement prop
 
   return {
-    content: `${modalStyles.content} ${sizeClasses} ${positionClasses}`.trim()
+    content: `${modalStyles.content} ${sizeClasses}`.trim()
   };
 }
