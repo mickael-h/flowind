@@ -172,7 +172,7 @@ import {
 ### Form
 
 ```svelte
-<Form onSubmit={handleSubmit}>
+<Form layout="vertical" spacing="lg" onSubmit={handleSubmit}>
   <Input label="Name" placeholder="Enter your name" />
   <Input label="Email" type="email" placeholder="Enter your email" />
   <Button type="submit" variant="primary">Submit</Button>
@@ -181,72 +181,105 @@ import {
 
 **Props:**
 
-- `onSubmit`: `(event: SubmitEvent) => void`
+- `layout`: `'vertical' | 'horizontal'`
+- `spacing`: `'sm' | 'md' | 'lg'`
+- `onSubmit`: `(formData: FormData) => void`
 
 ### Tabs
 
 ```svelte
-<Tabs>
-  <svelte:fragment slot="tab-1">Tab 1</svelte:fragment>
-  <svelte:fragment slot="panel-1">Content for tab 1</svelte:fragment>
-  <svelte:fragment slot="tab-2">Tab 2</svelte:fragment>
-  <svelte:fragment slot="panel-2">Content for tab 2</svelte:fragment>
-</Tabs>
+<Tabs
+  items={[
+    { id: 'one', label: 'First Tab', content: tabOneContent },
+    { id: 'two', label: 'Second Tab', content: tabTwoContent }
+  ]}
+  activeId="one"
+  position="top"
+/>
 ```
 
 **Props:**
 
-- `defaultTab`: `string` (optional)
+- `items`: `{ id: string; label: string; content: Snippet }[]`
+- `activeId`: `string` (optional)
+- `position`: `'top' | 'bottom' | 'left' | 'right'`
 
 ### Accordion
 
 ```svelte
-<Accordion>
-  <svelte:fragment slot="item-1">
-    <svelte:fragment slot="title">Section 1</svelte:fragment>
-    <svelte:fragment slot="content">Content for section 1</svelte:fragment>
-  </svelte:fragment>
-  <svelte:fragment slot="item-2">
-    <svelte:fragment slot="title">Section 2</svelte:fragment>
-    <svelte:fragment slot="content">Content for section 2</svelte:fragment>
-  </svelte:fragment>
-</Accordion>
+<Accordion
+  items={[
+    {
+      id: 'faq-1',
+      title: 'What is Flowind Design System?',
+      content: faqOneContent
+    },
+    {
+      id: 'faq-2',
+      title: 'How do I customize components?',
+      content: faqTwoContent
+    }
+  ]}
+  multiple={false}
+  flush={false}
+  arrowPosition="right"
+/>
+
+**Props:**
+
+- `items`: `{ id: string; title: string; content: Snippet; open?: boolean }[]`
+- `variant`: `'default' | 'elevated' | 'outlined' | 'flat'`
+- `multiple`: `boolean` - Allow multiple items to be open simultaneously
+- `flush`: `boolean` - Remove borders and spacing
+- `arrowPosition`: `'left' | 'right'` - Position of the expand/collapse arrow
 ```
 
 ### Modal
 
 ```svelte
-<Modal bind:open={isOpen} title="Example Modal">
-  <p>This is the modal content.</p>
-  <svelte:fragment slot="footer">
-    <Button variant="secondary" onclick={() => (isOpen = false)}>Cancel</Button>
-    <Button variant="primary">Confirm</Button>
-  </svelte:fragment>
-</Modal>
+<Modal
+  bind:open={isOpen}
+  title="Confirm Action"
+  size="md"
+  position="center"
+  body={modalBody}
+  footer={modalFooter}
+/>
 ```
 
 **Props:**
 
 - `open`: `boolean`
 - `title`: `string`
+- `size`: `'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'`
 - `position`: `'center' | 'top' | 'bottom' | 'left' | 'right'`
+- `closable`: `boolean`
+- `body`: `Snippet`
+- `footer`: `Snippet`
+- `header`: `Snippet`
 
 ### Table
 
 ```svelte
-<Table {columns} {rows} sortable expandable>
-  <svelte:fragment slot="expanded-content">
-    <p>Additional details for this row</p>
-  </svelte:fragment>
-</Table>
+<Table
+  {columns}
+  {rows}
+  sortable={true}
+  expandable={true}
+  striped={true}
+  hoverable={true}
+  variant="default"
+/>
 ```
 
 **Props:**
 
-- `columns`: `TableColumn[]`
-- `rows`: `TableRow[]`
-- `sortable`: `boolean`
-- `expandable`: `boolean`
+- `columns`: `TableColumn[]` - Array of column definitions with `key`, `label`, `sortable`, `width`, `align`
+- `rows`: `TableRow[]` - Array of row data with `id`, `data`, `type`, `expanded`, `children`
+- `sortable`: `boolean` - Enable column sorting
+- `expandable`: `boolean` - Enable row expansion
+- `striped`: `boolean` - Add striped styling
+- `hoverable`: `boolean` - Add hover effects
 - `variant`: `'default' | 'elevated' | 'outlined' | 'flat'`
 
 ## 🎨 Design Tokens
