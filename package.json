@@ -1,11 +1,50 @@
 {
-  "name": "flowind",
-  "private": true,
-  "version": "0.0.1",
+  "name": "flowind-design-system",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "description": "A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite components",
+  "keywords": [
+    "svelte",
+    "design-system",
+    "tailwind",
+    "flowbite",
+    "components",
+    "ui"
+  ],
+  "author": "Flowind Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickael-h/flowind.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mickael-h/flowind/issues"
+  },
+  "homepage": "https://github.com/mickael-h/flowind#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": {
+      "import": "./dist/styles/index.js",
+      "types": "./dist/styles/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "vite dev --host 0.0.0.0",
-    "build": "vite build",
+    "build": "npm run build:components && npm run build:styles",
+    "build:components": "vite build --config vite.components.config.ts",
+    "build:styles": "vite build --config vite.styles.config.ts",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -15,7 +54,13 @@
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0",
+    "flowbite-svelte": "^1.12.0",
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.0",

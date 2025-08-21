@@ -30,7 +30,14 @@
     TableBodyCell as FlowbiteTableBodyCell
   } from 'flowbite-svelte';
 
-  import { buildTableClasses, tableStyles, type TableVariant } from '$lib/styles/table.style';
+  import {
+    buildTableClasses,
+    buildSortIconClasses,
+    buildExpandIconClasses,
+    buildCellClasses,
+    tableStyles,
+    type TableVariant
+  } from '$lib/styles/table.style';
 
   type SortDirection = 'asc' | 'desc';
 
@@ -135,32 +142,39 @@
     rows = toggleInRows(rows);
   }
 
-  function getSortIcon(columnKey: string) {
-    const baseClasses = tableStyles.icons.sort;
-    if (!sortable || sortColumn !== columnKey) {
-      return baseClasses;
-    }
-    const activeClasses = `${baseClasses} ${tableStyles.icons.sortActive}`;
-    return sortDirection === 'asc' ? `${activeClasses} rotate-180` : activeClasses;
+  // Helper functions now use the build functions from styles
+  function getSortIconClasses(columnKey: string) {
+    return buildSortIconClasses({
+      isActive: sortable && sortColumn === columnKey,
+      sortDirection
+    });
   }
 
-  function getExpandIcon(isExpanded: boolean, hasContent: boolean) {
-    const baseClasses = tableStyles.icons.expand;
-    if (!hasContent) return baseClasses;
-    const activeClasses = hasContent
-      ? `${baseClasses} ${tableStyles.icons.expandActive}`
-      : baseClasses;
-    return isExpanded ? `${activeClasses} rotate-90` : activeClasses;
+  function getExpandIconClasses(isExpanded: boolean, hasContent: boolean) {
+    return buildExpandIconClasses({
+      isExpanded,
+      hasExpandableContent: hasContent
+    });
+  }
+
+  function getCellClasses(
+    align: 'left' | 'center' | 'right' = 'left',
+    isFirstColumn: boolean = false
+  ) {
+    return buildCellClasses({
+      alignment: align,
+      isFirstColumn
+    });
   }
 
   function getCellAlignment(align: 'left' | 'center' | 'right' = 'left') {
     switch (align) {
       case 'center':
-        return 'text-center';
+        return tableStyles.content.textCenter;
       case 'right':
-        return 'text-right';
+        return tableStyles.content.textRight;
       default:
-        return 'text-left';
+        return tableStyles.content.textLeft;
     }
   }
 
@@ -208,7 +222,7 @@
               aria-label={`Sort by ${column.label}`}
             >
               <span>{column.label}</span>
-              <svg class={getSortIcon(column.key)} fill="currentColor" viewBox="0 0 20 20">
+              <svg class={getSortIconClasses(column.key)} fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fill-rule="evenodd"
                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -237,9 +251,7 @@
           {#each columns as column, columnIndex}
             <FlowbiteTableBodyCell
               style={column.width ? `width: ${column.width}` : ''}
-              class="{getCellAlignment(column.align)} {tableStyles.body.cell} {columnIndex === 0
-                ? '!p-0'
-                : ''}"
+              class={getCellClasses(column.align, columnIndex === 0)}
             >
               {#if columnIndex === 0}
                 <!-- First column gets the icon, arrow, and indentation -->
@@ -270,7 +282,7 @@
                 >
                   {#if shouldShowExpandIcon(row)}
                     <svg
-                      class={getExpandIcon(row.expanded || false, shouldShowExpandIcon(row))}
+                      class={getExpandIconClasses(row.expanded || false, shouldShowExpandIcon(row))}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >

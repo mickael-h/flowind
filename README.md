@@ -1,50 +1,253 @@
-# Flowind Design System
+# flowind-design-system
 
-A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite components. This project demonstrates how to create a unified design system that ensures visual consistency across applications.
+A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite components. This package provides reusable UI components and design tokens for building consistent web applications.
 
 ## 🚀 Features
 
 - **Custom Design Tokens**: Comprehensive color palette, typography, spacing, and shadow system
-- **Reusable Components**: Button, Card, Input, Badge, and Form components
-- **Storybook Integration**: Interactive component documentation and testing
-- **TypeScript Support**: Full type safety for all components
+- **Reusable Components**: Button, Card, Input, Badge, Form, Tabs, Accordion, Modal, Table, and Text components
+- **TypeScript Support**: Full type safety for all components and props
 - **Accessibility**: WCAG 2.1 AA compliant components
 - **Responsive Design**: Mobile-first approach with flexible layouts
+- **Dark Mode**: Built-in dark mode support with automatic theme switching
 
 ## 🛠️ Tech Stack
 
 - **Svelte 5**: Modern reactive framework
-- **SvelteKit**: Full-stack web framework
 - **Tailwind CSS 4**: Utility-first CSS framework
 - **Flowbite Svelte**: Component library built on top of Tailwind
-- **Storybook**: Component development and documentation
 - **TypeScript**: Type safety and better developer experience
 
 ## 📦 Installation
 
-1. **Clone the repository**:
+### Installation
 
-   ```bash
-   git clone <repository-url>
-   cd flowind
-   ```
+```bash
+npm install flowind-design-system
+```
 
-2. **Install dependencies**:
+### For Ruby on Rails with Svelte
 
-   ```bash
-   npm install
-   ```
+1. **Add to your Rails project**:
 
-3. **Start the development server**:
+```bash
+# In your Rails app directory
+npm install flowind-design-system
+```
 
-   ```bash
-   npm run dev
-   ```
+2. **Configure your Svelte setup** (if using `svelte-rails` or similar):
 
-4. **Open Storybook** (in a new terminal):
-   ```bash
-   npm run storybook
-   ```
+```javascript
+// In your Svelte entry point
+import {
+  Button,
+  Card,
+  Input,
+  Badge,
+  Text,
+  Form,
+  Tabs,
+  Accordion,
+  Modal,
+  Table
+} from 'flowind-design-system';
+```
+
+## 🎨 Usage
+
+### Basic Component Usage
+
+```svelte
+<script>
+  import {
+    Button,
+    Card,
+    Input,
+    Badge,
+    Text,
+    Form,
+    Tabs,
+    Accordion,
+    Modal,
+    Table
+  } from 'flowind-design-system';
+</script>
+
+<Card variant="elevated" padding="lg">
+  <Text variant="h4" as="h4">Welcome</Text>
+  <Input label="Email" placeholder="Enter your email" />
+  <Button variant="primary" size="md">Submit</Button>
+  <Badge variant="success">Active</Badge>
+</Card>
+```
+
+### Using Design Tokens
+
+```svelte
+<script>
+  import { buttonStyles, buildButtonClasses } from 'flowind-design-system';
+
+  const customButtonClasses = buildButtonClasses({
+    variant: 'primary',
+    size: 'lg',
+    disabled: false
+  });
+</script>
+
+<button class={customButtonClasses}> Custom Button </button>
+```
+
+## 🎯 Components
+
+### Button
+
+```svelte
+<Button variant="primary" size="md" disabled={false}>Click me</Button>
+```
+
+**Props:**
+
+- `variant`: `'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error' | 'outline' | 'ghost'`
+- `size`: `'xs' | 'sm' | 'md' | 'lg' | 'xl'`
+- `disabled`: `boolean`
+
+### Card
+
+```svelte
+<Card variant="elevated" padding="lg">
+  <h3>Title</h3>
+  <p>Content</p>
+</Card>
+```
+
+**Props:**
+
+- `variant`: `'default' | 'elevated' | 'outlined' | 'flat'`
+- `padding`: `'none' | 'sm' | 'md' | 'lg' | 'xl'`
+
+### Input
+
+```svelte
+<Input
+  label="Email"
+  placeholder="Enter email..."
+  helperText="We'll never share your email"
+  variant="default"
+  size="md"
+/>
+```
+
+**Props:**
+
+- `label`: `string`
+- `placeholder`: `string`
+- `helperText`: `string`
+- `variant`: `'default' | 'filled' | 'outlined'`
+- `size`: `'sm' | 'md' | 'lg'`
+
+### Badge
+
+```svelte
+<Badge variant="primary" size="md" removable>New</Badge>
+```
+
+**Props:**
+
+- `variant`: `'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error' | 'info'`
+- `size`: `'sm' | 'md' | 'lg'`
+- `removable`: `boolean`
+
+### Text
+
+```svelte
+<Text variant="h4" as="h4" color="primary">Heading Text</Text>
+```
+
+**Props:**
+
+- `variant`: `'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'bodySmall' | 'meta'`
+- `as`: `'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div'`
+- `color`: `'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error'`
+
+### Form
+
+```svelte
+<Form onSubmit={handleSubmit}>
+  <Input label="Name" placeholder="Enter your name" />
+  <Input label="Email" type="email" placeholder="Enter your email" />
+  <Button type="submit" variant="primary">Submit</Button>
+</Form>
+```
+
+**Props:**
+
+- `onSubmit`: `(event: SubmitEvent) => void`
+
+### Tabs
+
+```svelte
+<Tabs>
+  <svelte:fragment slot="tab-1">Tab 1</svelte:fragment>
+  <svelte:fragment slot="panel-1">Content for tab 1</svelte:fragment>
+  <svelte:fragment slot="tab-2">Tab 2</svelte:fragment>
+  <svelte:fragment slot="panel-2">Content for tab 2</svelte:fragment>
+</Tabs>
+```
+
+**Props:**
+
+- `defaultTab`: `string` (optional)
+
+### Accordion
+
+```svelte
+<Accordion>
+  <svelte:fragment slot="item-1">
+    <svelte:fragment slot="title">Section 1</svelte:fragment>
+    <svelte:fragment slot="content">Content for section 1</svelte:fragment>
+  </svelte:fragment>
+  <svelte:fragment slot="item-2">
+    <svelte:fragment slot="title">Section 2</svelte:fragment>
+    <svelte:fragment slot="content">Content for section 2</svelte:fragment>
+  </svelte:fragment>
+</Accordion>
+```
+
+### Modal
+
+```svelte
+<Modal bind:open={isOpen} title="Example Modal">
+  <p>This is the modal content.</p>
+  <svelte:fragment slot="footer">
+    <Button variant="secondary" onclick={() => (isOpen = false)}>Cancel</Button>
+    <Button variant="primary">Confirm</Button>
+  </svelte:fragment>
+</Modal>
+```
+
+**Props:**
+
+- `open`: `boolean`
+- `title`: `string`
+- `position`: `'center' | 'top' | 'bottom' | 'left' | 'right'`
+
+### Table
+
+```svelte
+<Table {columns} {rows} sortable expandable>
+  <svelte:fragment slot="expanded-content">
+    <p>Additional details for this row</p>
+  </svelte:fragment>
+</Table>
+```
+
+**Props:**
+
+- `columns`: `TableColumn[]`
+- `rows`: `TableRow[]`
+- `sortable`: `boolean`
+- `expandable`: `boolean`
+- `variant`: `'default' | 'elevated' | 'outlined' | 'flat'`
 
 ## 🎨 Design Tokens
 
@@ -64,145 +267,128 @@ A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite comp
 - **Base Unit**: 4px (0.25rem)
 - **Scale**: 0px to 96px using Tailwind's spacing system
 
-## 🧩 Components
+## 🔧 Configuration
 
-### Button
+### Tailwind CSS Setup
 
-```svelte
-<Button variant="primary" size="md">Click me</Button>
+Make sure your `tailwind.config.js` includes the design system:
+
+```javascript
+module.exports = {
+  content: [
+    './src/**/*.{html,js,svelte,ts}',
+    './node_modules/flowind-design-system/dist/**/*.{js,ts}'
+  ],
+  theme: {
+    extend: {
+      // Your custom theme extensions
+    }
+  },
+  plugins: []
+};
 ```
 
-**Variants**: primary, secondary, accent, success, warning, error, outline, ghost
-**Sizes**: xs, sm, md, lg, xl
+### Dark Mode
 
-### Card
+The components automatically support dark mode when Tailwind's dark mode is enabled:
 
-```svelte
-<Card variant="elevated" padding="md">
-  <h3>Title</h3>
-  <p>Content</p>
-</Card>
+```javascript
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class' // or 'media'
+  // ... rest of config
+};
 ```
 
-**Variants**: default, elevated, outlined, flat
-**Padding**: none, sm, md, lg, xl
+## 📚 API Reference
 
-### Input
+### Style Functions
 
-```svelte
-<Input label="Email" placeholder="Enter email..." helperText="We'll never share your email" />
+All components include helper functions for building custom classes:
+
+```javascript
+import {
+  buildButtonClasses,
+  buildCardClasses,
+  buildInputClasses,
+  buildBadgeClasses,
+  buildTextClasses,
+  buildFormClasses,
+  buildTabsClasses,
+  buildAccordionClasses,
+  buildModalClasses,
+  buildTableClasses
+} from 'flowind-design-system';
+
+const buttonClasses = buildButtonClasses({
+  variant: 'primary',
+  size: 'lg',
+  disabled: false
+});
+
+const cardClasses = buildCardClasses({
+  variant: 'elevated',
+  padding: 'lg'
+});
+
+const inputClasses = buildInputClasses({
+  variant: 'default',
+  size: 'md'
+});
+
+const badgeClasses = buildBadgeClasses({
+  variant: 'primary',
+  size: 'md'
+});
 ```
 
-**Variants**: default, filled, outlined
-**Sizes**: sm, md, lg
+### Style Objects
 
-### Badge
+Access raw style objects for custom implementations:
 
-```svelte
-<Badge variant="primary" size="md">New</Badge>
+```javascript
+import {
+  buttonStyles,
+  cardStyles,
+  inputStyles,
+  badgeStyles,
+  textStyles,
+  formStyles,
+  tabsStyles,
+  accordionStyles,
+  modalStyles,
+  tableStyles
+} from 'flowind-design-system';
+
+console.log(buttonStyles.variants.primary);
+// Output: '!bg-primary-600 !text-white hover:!bg-primary-700 ...'
+
+console.log(tableStyles.variants.default);
+// Output: '!bg-transparent !border-0 !shadow-none !rounded-none'
 ```
-
-**Variants**: primary, secondary, accent, success, warning, error, info
-**Sizes**: sm, md, lg
-
-## 📚 Storybook
-
-Storybook provides interactive documentation for all components. Run `npm run storybook` to:
-
-- View all component variants and states
-- Test component interactions
-- See component documentation
-- Develop components in isolation
-
-## 🎯 Usage Guidelines
-
-### Component Composition
-
-1. **Prefer composition over inheritance**: Build complex components by combining simple ones
-2. **Use consistent spacing**: Apply spacing tokens consistently across components
-3. **Maintain visual hierarchy**: Use typography scale to establish clear information hierarchy
-
-### Accessibility
-
-1. **Color contrast**: Ensure all text meets WCAG AA contrast requirements
-2. **Focus states**: Always provide visible focus indicators
-3. **Semantic HTML**: Use appropriate HTML elements for their intended purpose
-4. **ARIA labels**: Add ARIA labels for interactive elements when needed
-
-### Responsive Design
-
-1. **Mobile-first**: Design for mobile devices first, then enhance for larger screens
-2. **Flexible layouts**: Use CSS Grid and Flexbox for responsive layouts
-3. **Touch targets**: Ensure interactive elements are at least 44px × 44px on mobile
-
-## 🧪 Testing
-
-```bash
-# Run unit tests
-npm run test:unit
-
-# Run all tests
-npm run test
-
-# Run type checking
-npm run check
-```
-
-## 📖 Documentation
-
-- **Design System Guide**: See `DESIGN_SYSTEM.md` for detailed documentation
-- **Component API**: Each component has detailed documentation in Storybook
-- **Design Tokens**: All design tokens are documented in the main page
-
-## 🔧 Development
-
-### Project Structure
-
-```
-src/
-├── lib/
-│   └── components/
-│       └── ui/           # Reusable UI components
-├── routes/               # SvelteKit pages
-├── stories/              # Storybook stories
-└── app.css              # Global styles and design tokens
-```
-
-### Adding New Components
-
-1. Create the component in `src/lib/components/ui/`
-2. Add TypeScript interfaces for props
-3. Use design tokens for styling
-4. Add Storybook stories
-5. Update the component index file
-6. Test accessibility and responsiveness
-
-### Customizing Design Tokens
-
-1. Modify `tailwind.config.js` for new tokens
-2. Update CSS variables in `src/app.css`
-3. Document changes in `DESIGN_SYSTEM.md`
-
-## 🌟 Key Benefits
-
-- **Consistency**: Unified design tokens ensure visual harmony
-- **Efficiency**: Reusable components speed up development
-- **Maintainability**: Centralized design system is easy to update
-- **Accessibility**: Built-in accessibility features
-- **Documentation**: Comprehensive documentation with Storybook
-
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 🤝 Contributing
 
-1. Follow existing patterns and conventions
-2. Add documentation for new components
-3. Create Storybook stories for new components
-4. Ensure accessibility compliance
-5. Test across different screen sizes
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
----
+## 📄 License
 
-Built with ❤️ using Svelte, Tailwind CSS, and Flowbite
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support and questions:
+
+- Create an issue on GitHub
+- Check the documentation
+- Review the Storybook examples
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/mickael-h/flowind)
+- [Storybook Documentation](https://mickael-h.github.io/flowind)
+- [NPM Package](https://www.npmjs.com/package/flowind-design-system)

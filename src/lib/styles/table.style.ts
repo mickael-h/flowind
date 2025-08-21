@@ -227,19 +227,96 @@ export const tableStyles = {
       dark:text-gray-300
     `
       .replace(/\s+/g, ' ')
-      .trim()
+      .trim(),
+
+    // Alignment utilities
+    textCenter: 'text-center',
+    textRight: 'text-right',
+    textLeft: 'text-left',
+
+    // Cell padding override for first column
+    firstColumnPadding: '!p-0',
+
+    // Rotation utilities
+    rotate180: 'rotate-180',
+    rotate90: 'rotate-90'
   }
 } as const;
 
 export type TableVariant = keyof typeof tableStyles.variants;
 
-export function buildTableClasses({
-  variant = 'default'
-}: {
+export interface TableClassOptions {
   variant?: TableVariant;
-} = {}) {
+}
+
+export interface SortIconOptions {
+  isActive?: boolean;
+  sortDirection?: 'asc' | 'desc';
+}
+
+export interface ExpandIconOptions {
+  isExpanded?: boolean;
+  hasExpandableContent?: boolean;
+}
+
+export interface CellAlignmentOptions {
+  alignment?: 'left' | 'center' | 'right';
+  isFirstColumn?: boolean;
+}
+
+export function buildTableClasses({ variant = 'default' }: TableClassOptions = {}) {
   return {
     container: tableStyles.container,
     table: tableStyles.variants[variant]
   };
+}
+
+export function buildSortIconClasses({
+  isActive = false,
+  sortDirection = 'asc'
+}: SortIconOptions = {}) {
+  const baseClasses = tableStyles.icons.sort;
+
+  if (!isActive) {
+    return baseClasses;
+  }
+
+  const activeClasses = `${baseClasses} ${tableStyles.icons.sortActive}`;
+  return sortDirection === 'asc'
+    ? `${activeClasses} ${tableStyles.content.rotate180}`
+    : activeClasses;
+}
+
+export function buildExpandIconClasses({
+  isExpanded = false,
+  hasExpandableContent = false
+}: ExpandIconOptions = {}) {
+  const baseClasses = tableStyles.icons.expand;
+
+  if (!hasExpandableContent) {
+    return baseClasses;
+  }
+
+  const activeClasses = `${baseClasses} ${tableStyles.icons.expandActive}`;
+  return isExpanded ? `${activeClasses} ${tableStyles.content.rotate90}` : activeClasses;
+}
+
+export function buildCellClasses({
+  alignment = 'left',
+  isFirstColumn = false
+}: CellAlignmentOptions = {}) {
+  const alignmentClass = (() => {
+    switch (alignment) {
+      case 'center':
+        return tableStyles.content.textCenter;
+      case 'right':
+        return tableStyles.content.textRight;
+      default:
+        return tableStyles.content.textLeft;
+    }
+  })();
+
+  const paddingClass = isFirstColumn ? tableStyles.content.firstColumnPadding : '';
+
+  return `${alignmentClass} ${tableStyles.body.cell} ${paddingClass}`.trim();
 }

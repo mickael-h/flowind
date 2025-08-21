@@ -1,7 +1,11 @@
-// Export all style modules
+// Export component style modules (public API)
 export * from './button.style';
 export * from './card.style';
 export * from './badge.style';
 export * from './input.style';
 export * from './form.style';
-export * from './page.style';
+export * from './text.style';
+export * from './tabs.style';
+export * from './accordion.style';
+export * from './modal.style';
+export * from './table.style';
