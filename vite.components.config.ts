@@ -12,15 +12,18 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
-      external: ['svelte'],
+      external: ['svelte', 'flowbite-svelte'],
       output: {
         globals: {
-          svelte: 'Svelte'
+          svelte: 'Svelte',
+          'flowbite-svelte': 'FlowbiteSvelte'
         }
       }
     },
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    // Don't bundle, just copy files
+    copyPublicDir: false
   },
   resolve: {
     alias: {
