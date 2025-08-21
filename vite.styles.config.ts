@@ -1,7 +1,16 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
+  plugins: [
+    dts({
+      insertTypesEntry: true,
+      include: ['src/lib/styles/**/*'],
+      outDir: 'dist/styles',
+      copyDtsFiles: true
+    })
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/lib/styles/index.ts'),
@@ -20,7 +29,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '$lib': resolve(__dirname, 'src/lib')
+      $lib: resolve(__dirname, 'src/lib')
     }
   }
 });
