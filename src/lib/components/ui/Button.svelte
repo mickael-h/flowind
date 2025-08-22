@@ -9,6 +9,9 @@
     disabled = false,
     fullWidth = false,
     children,
+    onclick,
+    onkeydown,
+    'aria-label': ariaLabel,
     ...rest
   } = $props<{
     variant?:
@@ -25,13 +28,24 @@
     disabled?: boolean;
     fullWidth?: boolean;
     children?: Snippet;
+    onclick?: (event: MouseEvent) => void;
+    onkeydown?: (event: KeyboardEvent) => void;
+    'aria-label'?: string;
   }>();
 
   // Build custom classes for our opinionated styling
   const customClasses = $derived(buildButtonClasses({ variant, size, fullWidth, disabled }));
 </script>
 
-<button type="button" {disabled} class={customClasses} {...rest}>
+<button
+  type="button"
+  {disabled}
+  class={customClasses}
+  {onclick}
+  {onkeydown}
+  aria-label={ariaLabel}
+  {...rest}
+>
   {#if loading}
     <svg
       class={buttonStyles.spinner}

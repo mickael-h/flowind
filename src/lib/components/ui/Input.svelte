@@ -8,6 +8,8 @@
     success = false,
     helperText = '',
     label = '',
+    type = 'text',
+    placeholder = '',
     ...rest
   } = $props<{
     variant?: 'default' | 'success' | 'error';
@@ -16,6 +18,8 @@
     success?: boolean;
     helperText?: string;
     label?: string;
+    type?: string;
+    placeholder?: string;
   }>();
 
   // Determine the actual variant based on error/success states
@@ -44,7 +48,7 @@
     </label>
   {/if}
 
-  <input class={customClasses} {...rest} />
+  <input class={customClasses} {type} {placeholder} {...rest} />
 
   {#if helperText}
     <div class={helperClasses}>

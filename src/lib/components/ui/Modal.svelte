@@ -107,17 +107,17 @@
   <div
     bind:this={backdropRef}
     class={modalStyles.backdrop}
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={title ? 'modal-title' : undefined}
+    tabindex="0"
+    transition:fade={{ duration: 200 }}
     onclick={handleBackdropClick}
     onkeydown={(e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         handleBackdropClick(e as any);
       }
     }}
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby={title ? 'modal-title' : undefined}
-    tabindex="0"
-    transition:fade={{ duration: 200 }}
   >
     <!-- Modal Content -->
     <div
