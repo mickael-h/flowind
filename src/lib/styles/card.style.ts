@@ -14,25 +14,25 @@ export const cardStyles = {
   // Variant-specific overrides for styles
   variants: {
     default:
-      '!bg-white dark:!bg-gray-800 !border !border-gray-200 dark:!border-gray-700 hover:!shadow-md',
-    elevated: '!bg-white dark:!bg-gray-800 !shadow-lg hover:!shadow-xl',
+      'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-md',
+    elevated: 'bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl',
     outlined:
-      '!bg-transparent !border-2 !border-primary-300 dark:!border-primary-600 hover:!border-primary-400 dark:hover:!border-primary-500',
-    flat: '!bg-primary-50 dark:!bg-primary-900/20 !border-0 hover:!bg-primary-100 dark:hover:!bg-primary-900/40'
+      'bg-transparent border-2 border-primary-300 dark:border-primary-600 hover:border-primary-400 dark:hover:border-primary-500',
+    flat: 'bg-primary-50 dark:bg-primary-900/20 border-0 hover:bg-primary-100 dark:hover:bg-primary-900/40'
   },
 
   // Padding overrides
   padding: {
-    none: '!p-0',
-    sm: '!p-4',
-    md: '!p-6',
-    lg: '!p-8',
-    xl: '!p-10'
+    none: 'p-0',
+    sm: 'p-4',
+    md: 'p-6',
+    lg: 'p-8',
+    xl: 'p-10'
   },
 
   // Interactive and hover effects
-  interactive: 'cursor-pointer hover:!scale-105',
-  hoverEffects: 'hover:!shadow-lg hover:!-translate-y-1'
+  interactive: 'cursor-pointer hover:scale-105',
+  hoverEffects: 'hover:shadow-lg hover:-translate-y-1'
 } as const;
 
 // Helper function to build card classes

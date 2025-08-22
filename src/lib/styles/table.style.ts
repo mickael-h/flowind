@@ -17,10 +17,10 @@ export const tableStyles = {
 
   // Table variants for different use cases
   variants: {
-    default: '!bg-transparent !border-0 !shadow-none !rounded-none w-full',
-    elevated: '!bg-transparent !border-0 !shadow-none !rounded-none w-full',
-    outlined: '!bg-transparent !border-0 !shadow-none !rounded-none w-full',
-    flat: '!bg-transparent !border-0 !shadow-none !rounded-none w-full'
+    default: 'bg-transparent border-0 shadow-none rounded-none w-full',
+    elevated: 'bg-transparent border-0 shadow-none rounded-none w-full',
+    outlined: 'bg-transparent border-0 shadow-none rounded-none w-full',
+    flat: 'bg-transparent border-0 shadow-none rounded-none w-full'
   },
 
   // Header styles
@@ -244,7 +244,7 @@ export const tableStyles = {
     textLeft: 'text-left',
 
     // Cell padding override for first column
-    firstColumnPadding: '!p-0',
+    firstColumnPadding: 'p-0',
 
     // Rotation utilities
     rotate180: 'rotate-180',

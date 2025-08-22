@@ -5,15 +5,15 @@ export type ModalPosition = 'center' | 'top' | 'bottom' | 'left' | 'right';
 export const modalStyles = {
   // Content styling for native modal
   content: `
-    !rounded-xl 
-    !shadow-2xl 
-    !border-0 
-    !backdrop-blur-sm 
-    !transition-all 
-    !duration-500 
-    hover:!scale-105
-    !bg-white 
-    dark:!bg-gray-800
+        rounded-xl
+    shadow-2xl
+    border-0 
+    backdrop-blur-sm 
+    transition-all 
+    duration-500 
+    hover:scale-105
+    bg-white 
+    dark:bg-gray-800
   `
     .replace(/\s+/g, ' ')
     .trim(),
@@ -22,7 +22,7 @@ export const modalStyles = {
   header: 'flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700',
   title: 'text-xl font-semibold text-gray-900 dark:text-white',
   closeButton:
-    'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 hover:!scale-110',
+    'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200 hover:scale-110',
   closeIcon: 'h-5 w-5',
 
   // Body styling
@@ -37,11 +37,11 @@ export const modalStyles = {
 
   // Size overrides for more distinctive sizing
   sizes: {
-    sm: '!max-w-md !w-full',
-    md: '!max-w-lg !w-full',
-    lg: '!max-w-2xl !w-full',
-    xl: '!max-w-4xl !w-full',
-    full: '!max-w-full !w-full !mx-4'
+    sm: 'max-w-md w-full',
+    md: 'max-w-lg w-full',
+    lg: 'max-w-2xl w-full',
+    xl: 'max-w-4xl w-full',
+    full: 'max-w-full w-full mx-4'
   }
 };
 

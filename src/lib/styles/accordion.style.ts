@@ -107,7 +107,7 @@ export const accordionStyles = {
       .trim(),
 
     bordered: `
-      border-2 !border-primary-200 dark:!border-primary-700
+      border-2 border-primary-200 dark:border-primary-700
       shadow-md
     `
       .replace(/\s+/g, ' ')

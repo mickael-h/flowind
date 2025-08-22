@@ -92,7 +92,7 @@ export declare const pageStyles: {
     readonly tabsShowcase: {
         readonly content: "space-y-4";
         readonly contentBox: "rounded-lg bg-gray-50 p-4 dark:bg-gray-700";
-        readonly list: "list-inside list-disc space-y-2";
+        readonly list: "list-inside list-disc space-y-2 [&>li]:pl-2";
         readonly grid: "grid grid-cols-2 gap-4";
         readonly primaryBox: "rounded bg-primary-50 p-3 dark:bg-primary-900/20";
         readonly secondaryBox: "rounded bg-secondary-50 p-3 dark:bg-secondary-900/20";

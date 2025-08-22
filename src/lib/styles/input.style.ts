@@ -2,15 +2,15 @@
 export const inputStyles = {
   // Base styling for native input
   base: `
-    !w-full
-    !transition-all 
-    !duration-300 
-    !border-2 
-    !rounded-xl 
-    !shadow-sm 
-    focus:!shadow-md 
-    focus:!ring-4 
-    focus:!ring-offset-1
+    w-full
+    transition-all 
+    duration-300 
+    border-2 
+    rounded-xl 
+    shadow-sm 
+    focus:shadow-md 
+    focus:ring-4 
+    focus:ring-offset-1
   `
     .replace(/\s+/g, ' ')
     .trim(),
@@ -18,20 +18,20 @@ export const inputStyles = {
   // Variant-specific overrides for colors
   variants: {
     default:
-      '!border-gray-300 !bg-white !text-gray-900 focus:!border-primary-500 focus:!ring-primary-200 dark:!border-gray-600 dark:!bg-gray-700 dark:!text-white dark:focus:!border-primary-400 dark:focus:!ring-primary-900/20',
+      'border-gray-300 bg-white text-gray-900 focus:border-primary-500 focus:ring-primary-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-primary-400 dark:focus:ring-primary-900/20',
     success:
-      '!border-green-300 !bg-white !text-gray-900 focus:!border-green-500 focus:!ring-green-200 dark:!border-green-600 dark:!bg-gray-700 dark:!text-white dark:focus:!border-green-400 dark:focus:!ring-green-900/20',
+      'border-green-300 bg-white text-gray-900 focus:border-green-500 focus:ring-green-200 dark:border-green-600 dark:bg-gray-700 dark:text-white dark:focus:border-green-400 dark:focus:ring-green-900/20',
     error:
-      '!border-red-300 !bg-white !text-gray-900 focus:!border-red-500 focus:!ring-red-200 dark:!border-red-600 dark:!bg-gray-700 dark:!text-white dark:focus:!border-red-400 dark:focus:!ring-red-900/20'
+      'border-red-300 bg-white text-gray-900 focus:border-red-500 focus:ring-red-200 dark:border-red-600 dark:bg-gray-700 dark:text-white dark:focus:border-red-400 dark:focus:ring-red-900/20'
   },
 
   // Size overrides
   sizes: {
-    xs: '!px-3 !py-2 !text-xs',
-    sm: '!px-3 !py-2.5 !text-sm',
-    md: '!px-4 !py-3 !text-base',
-    lg: '!px-5 !py-3.5 !text-lg',
-    xl: '!px-6 !py-4 !text-xl'
+    xs: 'px-3 py-2 text-xs',
+    sm: 'px-3 py-2.5 text-sm',
+    md: 'px-4 py-3 text-base',
+    lg: 'px-5 py-3.5 text-lg',
+    xl: 'px-6 py-4 text-xl'
   },
 
   // Label styles
