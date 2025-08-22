@@ -128,7 +128,7 @@ export const pageStyles = {
     // Tab content styles
     content: 'space-y-4',
     contentBox: 'rounded-lg bg-gray-50 p-4 dark:bg-gray-700',
-    list: 'list-inside list-disc space-y-2',
+    list: 'list-inside list-disc space-y-2 [&>li]:pl-2',
 
     // Tab grid styles
     grid: 'grid grid-cols-2 gap-4',

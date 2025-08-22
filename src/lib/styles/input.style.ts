@@ -1,7 +1,8 @@
-// Input component styles - opinionated customizations on top of Flowbite
+// Input component styles - modern and consistent with design system
 export const inputStyles = {
-  // Base styling to add to Flowbite Input
+  // Base styling for native input
   base: `
+    !w-full
     !transition-all 
     !duration-300 
     !border-2 

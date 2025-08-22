@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Card as FlowbiteCard } from 'flowbite-svelte';
   import { buildCardClasses } from '$lib/styles/card.style';
+  import type { Snippet } from 'svelte';
 
   let {
     variant = 'default' as const,
@@ -9,12 +9,18 @@
     interactive = false,
     children,
     ...rest
-  } = $props();
+  } = $props<{
+    variant?: 'default' | 'elevated' | 'outlined' | 'flat';
+    padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+    hover?: boolean;
+    interactive?: boolean;
+    children?: Snippet;
+  }>();
 
   // Build custom classes for our opinionated styling
   const customClasses = $derived(buildCardClasses({ variant, padding, interactive, hover }));
 </script>
 
-<FlowbiteCard class={customClasses} {...rest}>
+<div class={customClasses} {...rest}>
   {@render children?.()}
-</FlowbiteCard>
+</div>

@@ -1,6 +1,6 @@
 # flowind-design-system
 
-A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite components. This package provides reusable UI components and design tokens for building consistent web applications.
+A comprehensive design system built with Svelte and Tailwind CSS. This package provides reusable UI components and design tokens for building consistent web applications.
 
 ## 🚀 Features
 
@@ -15,7 +15,7 @@ A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite comp
 
 - **Svelte 5**: Modern reactive framework
 - **Tailwind CSS 4**: Utility-first CSS framework
-- **Flowbite Svelte**: Component library built on top of Tailwind
+
 - **TypeScript**: Type safety and better developer experience
 
 ## 📦 Installation
@@ -24,6 +24,38 @@ A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite comp
 
 ```bash
 npm install flowind-design-system
+```
+
+This package includes a complete custom design system with enhanced styling, animations, and color tokens. Our design system includes:
+
+- **Custom color palette** with semantic naming (primary, secondary, accent, success, warning, error)
+- **Enhanced animations** with smooth transitions and hover effects
+- **Custom focus states** with improved accessibility
+- **Optimized spacing and sizing** for better visual hierarchy
+- **Custom shadows** for depth and visual appeal
+
+**You need to import our theme CSS to get the full design experience.**
+
+### Theme Setup
+
+This package includes a complete custom design system with enhanced styling, animations, and color tokens. To get the full design experience, import our theme CSS:
+
+**Option 1: Import in your main CSS file**
+
+```css
+@import 'flowind-design-system/theme.css';
+```
+
+**Option 2: Import in your main JavaScript/TypeScript file**
+
+```javascript
+import 'flowind-design-system/theme.css';
+```
+
+**Option 3: For Rails with Sprockets**
+
+```erb
+<%= stylesheet_link_tag 'flowind-design-system/theme.css' %>
 ```
 
 ### For Ruby on Rails with Svelte

@@ -1,4 +1,4 @@
-// Badge component styles - opinionated customizations on top of Flowbite
+// Badge component styles - modern and consistent with design system
 export const badgeStyles = {
   // Base styling that applies to all badges
   base: `
@@ -22,7 +22,7 @@ export const badgeStyles = {
     .replace(/\s+/g, ' ')
     .trim(),
 
-  // Variant-specific colors to override Flowbite's defaults
+  // Variant-specific colors for our design system
   variants: {
     primary:
       '!bg-primary-50 !text-primary-700 hover:!bg-primary-100 focus:!ring-primary-300 dark:!bg-primary-900/20 dark:!text-primary-300 dark:hover:!bg-primary-800/30',

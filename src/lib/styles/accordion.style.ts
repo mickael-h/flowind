@@ -1,7 +1,7 @@
 // Accordion component styles using Tailwind utilities
 export type AccordionVariant = 'default' | 'flush' | 'bordered';
 
-// Accordion component styles - opinionated customizations on top of Flowbite
+// Accordion component styles - modern and consistent with design system
 export const accordionStyles = {
   // Base accordion container styles
   base: `

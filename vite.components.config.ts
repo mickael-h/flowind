@@ -12,11 +12,10 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
-      external: ['svelte', 'flowbite-svelte'],
+      external: ['svelte'],
       output: {
         globals: {
-          svelte: 'Svelte',
-          'flowbite-svelte': 'FlowbiteSvelte'
+          svelte: 'Svelte'
         }
       }
     },

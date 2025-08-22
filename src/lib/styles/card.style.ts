@@ -1,6 +1,6 @@
-// Card component styles - opinionated customizations on top of Flowbite
+// Card component styles - modern and consistent with design system
 export const cardStyles = {
-  // Base styling to add to Flowbite Card
+  // Base styling for native card
   base: `
     transition-all 
     duration-300 

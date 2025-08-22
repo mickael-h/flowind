@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Button as FlowbiteButton } from 'flowbite-svelte';
   import { buildButtonClasses, buttonStyles } from '$lib/styles/button.style';
+  import type { Snippet } from 'svelte';
 
   let {
     variant = 'primary' as const,
@@ -10,13 +10,28 @@
     fullWidth = false,
     children,
     ...rest
-  } = $props();
+  } = $props<{
+    variant?:
+      | 'primary'
+      | 'secondary'
+      | 'accent'
+      | 'success'
+      | 'warning'
+      | 'error'
+      | 'outline'
+      | 'ghost';
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    loading?: boolean;
+    disabled?: boolean;
+    fullWidth?: boolean;
+    children?: Snippet;
+  }>();
 
   // Build custom classes for our opinionated styling
   const customClasses = $derived(buildButtonClasses({ variant, size, fullWidth, disabled }));
 </script>
 
-<FlowbiteButton {disabled} class={customClasses} {...rest}>
+<button type="button" {disabled} class={customClasses} {...rest}>
   {#if loading}
     <svg
       class={buttonStyles.spinner}
@@ -40,4 +55,4 @@
     </svg>
   {/if}
   {@render children?.()}
-</FlowbiteButton>
+</button>

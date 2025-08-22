@@ -1,1 +1,5 @@
-// place files you want to import through the `$lib` alias in this folder.
+// Re-export all components from the ui directory
+export * from './components/ui/index';
+
+// Re-export all styles
+export * from './styles/index';

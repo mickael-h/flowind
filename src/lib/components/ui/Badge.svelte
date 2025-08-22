@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Badge as FlowbiteBadge } from 'flowbite-svelte';
   import { buildBadgeClasses, badgeStyles } from '$lib/styles/badge.style';
+  import type { Snippet } from 'svelte';
 
   let {
     variant = 'primary' as const,
@@ -8,7 +8,12 @@
     onRemove = undefined as (() => void) | undefined,
     children,
     ...rest
-  } = $props();
+  } = $props<{
+    variant?: 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error' | 'info';
+    removable?: boolean;
+    onRemove?: () => void;
+    children?: Snippet;
+  }>();
 
   // Build complete badge classes with variant-specific styling
   const badgeClasses = $derived(buildBadgeClasses(variant));
@@ -20,7 +25,7 @@
   }
 </script>
 
-<FlowbiteBadge class={badgeClasses} {...rest}>
+<span class={badgeClasses} {...rest}>
   {@render children?.()}
   {#if removable}
     <button
@@ -38,4 +43,4 @@
       </svg>
     </button>
   {/if}
-</FlowbiteBadge>
+</span>

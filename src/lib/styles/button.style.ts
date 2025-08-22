@@ -1,6 +1,6 @@
-// Button component styles - opinionated customizations on top of Flowbite
+// Button component styles - modern and consistent with design system
 export const buttonStyles = {
-  // Base styling to add to Flowbite Button
+  // Base styling for native button
   base: `
     font-semibold 
     tracking-wide 
@@ -14,6 +14,11 @@ export const buttonStyles = {
     focus:ring-4 
     focus:ring-offset-2
     cursor-pointer
+    rounded-lg
+    inline-flex
+    items-center
+    justify-center
+    gap-2
   `
     .replace(/\s+/g, ' ')
     .trim(),
@@ -38,7 +43,7 @@ export const buttonStyles = {
       '!bg-transparent !text-primary-600 hover:!bg-primary-50 focus:!ring-primary-300 dark:!text-primary-400 dark:hover:!bg-primary-900/20'
   },
 
-  // Size overrides to fix Flowbite's sizing issues
+  // Size variants for consistent sizing
   sizeOverrides: {
     xs: '!px-2 !py-1 !text-xs',
     sm: '!px-3 !py-1.5 !text-sm',
@@ -53,7 +58,7 @@ export const buttonStyles = {
   },
 
   // Loading spinner styles
-  spinner: 'mr-2 h-4 w-4 animate-spin',
+  spinner: 'h-4 w-4 animate-spin',
   spinnerCircle: 'opacity-25',
   spinnerPath: 'opacity-75',
 

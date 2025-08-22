@@ -1,9 +1,9 @@
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 export type ModalPosition = 'center' | 'top' | 'bottom' | 'left' | 'right';
 
-// Modal component styles - opinionated customizations on top of Flowbite
+// Modal component styles - modern and consistent with design system
 export const modalStyles = {
-  // Content styling to override Flowbite Modal
+  // Content styling for native modal
   content: `
     !rounded-xl 
     !shadow-2xl 
@@ -12,6 +12,8 @@ export const modalStyles = {
     !transition-all 
     !duration-500 
     hover:!scale-105
+    !bg-white 
+    dark:!bg-gray-800
   `
     .replace(/\s+/g, ' ')
     .trim(),
@@ -29,6 +31,10 @@ export const modalStyles = {
   // Footer styling
   footer: 'flex items-center justify-end gap-3 p-6 border-t border-gray-200 dark:border-gray-700',
 
+  // Backdrop styling
+  backdrop:
+    'fixed inset-0 z-40 flex items-center justify-center bg-black/30 p-4 backdrop-blur-[1px]',
+
   // Size overrides for more distinctive sizing
   sizes: {
     sm: '!max-w-md !w-full',
@@ -39,43 +45,51 @@ export const modalStyles = {
   }
 };
 
-export function getFlowbitePlacement(
-  position: ModalPosition
-):
-  | 'top-left'
-  | 'top-center'
-  | 'top-right'
-  | 'center-left'
-  | 'center'
-  | 'center-right'
-  | 'bottom-left'
-  | 'bottom-center'
-  | 'bottom-right' {
-  switch (position) {
-    case 'center':
-      return 'center';
-    case 'top':
-      return 'top-center';
-    case 'bottom':
-      return 'bottom-center';
-    case 'left':
-      return 'center-left';
-    case 'right':
-      return 'center-right';
-    default:
-      return 'center';
-  }
-}
-
 export function buildModalClasses({
   size = 'md'
 }: {
   size?: ModalSize;
 } = {}) {
   const sizeClasses = modalStyles.sizes[size];
-  // Position classes are not used here as positioning is handled by Flowbite's placement prop
+  // Position classes are handled by our custom positioning system
 
   return {
     content: `${modalStyles.content} ${sizeClasses}`.trim()
   };
+}
+
+// Helper function to get position classes
+export function getPositionClasses(position: ModalPosition): string {
+  switch (position) {
+    case 'center':
+      return 'm-auto';
+    case 'top':
+      return 'mt-12 mb-auto';
+    case 'bottom':
+      return 'mt-auto mb-12';
+    case 'left':
+      return 'ml-12 mr-auto';
+    case 'right':
+      return 'ml-auto mr-12';
+    default:
+      return 'm-auto';
+  }
+}
+
+// Helper function to get fly transition based on position
+export function getFlyTransition(position: ModalPosition) {
+  switch (position) {
+    case 'center':
+      return { duration: 300, start: 0.95, opacity: 0 };
+    case 'top':
+      return { duration: 300, y: -50, opacity: 0 };
+    case 'bottom':
+      return { duration: 300, y: 50, opacity: 0 };
+    case 'left':
+      return { duration: 300, x: -50, opacity: 0 };
+    case 'right':
+      return { duration: 300, x: 50, opacity: 0 };
+    default:
+      return { duration: 300, start: 0.95, opacity: 0 };
+  }
 }

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Input as FlowbiteInput, Label, Helper } from 'flowbite-svelte';
   import { buildInputClasses, inputStyles } from '$lib/styles/input.style';
 
   let {
@@ -10,7 +9,14 @@
     helperText = '',
     label = '',
     ...rest
-  } = $props();
+  } = $props<{
+    variant?: 'default' | 'success' | 'error';
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    error?: boolean;
+    success?: boolean;
+    helperText?: string;
+    label?: string;
+  }>();
 
   // Determine the actual variant based on error/success states
   const actualVariant = $derived(error ? 'error' : success ? 'success' : variant);
@@ -33,16 +39,16 @@
 
 <div class={inputStyles.container}>
   {#if label}
-    <Label for={rest.id} class={inputStyles.label}>
+    <label for={rest.id} class={inputStyles.label}>
       {label}
-    </Label>
+    </label>
   {/if}
 
-  <FlowbiteInput class={customClasses} {...rest} />
+  <input class={customClasses} {...rest} />
 
   {#if helperText}
-    <Helper class={helperClasses}>
+    <div class={helperClasses}>
       {helperText}
-    </Helper>
+    </div>
   {/if}
 </div>

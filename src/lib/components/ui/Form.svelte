@@ -1,13 +1,19 @@
 <script lang="ts">
   import { buildFormClasses } from '$lib/styles/form.style';
+  import type { Snippet } from 'svelte';
 
   let {
     layout = 'vertical' as const,
     spacing = 'md' as const,
-    onSubmit,
+    onSubmit = undefined as ((formData: FormData) => void) | undefined,
     children,
     ...rest
-  } = $props();
+  } = $props<{
+    layout?: 'vertical' | 'horizontal' | 'inline';
+    spacing?: 'sm' | 'md' | 'lg' | 'xl';
+    onSubmit?: (formData: FormData) => void;
+    children?: Snippet;
+  }>();
 
   // Build form classes using the extracted styles
   const formClasses = $derived(buildFormClasses({ layout, spacing }));

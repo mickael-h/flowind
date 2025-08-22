@@ -11,9 +11,13 @@
   let {
     position = 'top' as TabsPosition,
     items = [] as TabItem[],
-    activeId = undefined,
+    activeId = undefined as string | undefined,
     ...rest
-  } = $props();
+  } = $props<{
+    position?: TabsPosition;
+    items: TabItem[];
+    activeId?: string;
+  }>();
 
   const classes = $derived(buildTabsClasses({ position }));
 

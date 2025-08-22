@@ -19,7 +19,7 @@
   <title>Flowind Design System</title>
   <meta
     name="description"
-    content="A comprehensive design system built with Svelte, Tailwind CSS, and Flowbite components"
+    content="A comprehensive design system built with Svelte and Tailwind CSS"
   />
 </svelte:head>
 

@@ -17,10 +17,10 @@ export const tableStyles = {
 
   // Table variants for different use cases
   variants: {
-    default: '!bg-transparent !border-0 !shadow-none !rounded-none',
-    elevated: '!bg-transparent !border-0 !shadow-none !rounded-none',
-    outlined: '!bg-transparent !border-0 !shadow-none !rounded-none',
-    flat: '!bg-transparent !border-0 !shadow-none !rounded-none'
+    default: '!bg-transparent !border-0 !shadow-none !rounded-none w-full',
+    elevated: '!bg-transparent !border-0 !shadow-none !rounded-none w-full',
+    outlined: '!bg-transparent !border-0 !shadow-none !rounded-none w-full',
+    flat: '!bg-transparent !border-0 !shadow-none !rounded-none w-full'
   },
 
   // Header styles
@@ -97,6 +97,8 @@ export const tableStyles = {
       text-sm 
       text-gray-900 
       dark:text-gray-100
+      align-middle
+      h-12
     `
       .replace(/\s+/g, ' ')
       .trim(),
@@ -195,6 +197,8 @@ export const tableStyles = {
 
     rowName: `
       font-medium
+      truncate
+      whitespace-nowrap
     `
       .replace(/\s+/g, ' ')
       .trim(),
@@ -202,6 +206,11 @@ export const tableStyles = {
     otherColumn: `
       px-6 
       py-4
+      h-full
+      flex
+      items-center
+      truncate
+      whitespace-nowrap
     `
       .replace(/\s+/g, ' ')
       .trim(),
