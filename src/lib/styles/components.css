@@ -4,7 +4,7 @@
 .accordion-base { @apply border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm transition-all duration-200; }
 .accordion-flush { @apply border-0 shadow-none rounded-none bg-transparent; }
 .accordion-item-base { @apply border-b border-gray-200 dark:border-gray-700 last:border-b-0; }
-.accordion-item-header { @apply w-full px-5 py-4 text-left font-medium text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-between group; }
+.accordion-item-header { @apply w-full px-5 py-4 text-left font-medium text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-between; }
 .accordion-item-headerActive { @apply bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 border-b border-primary-200 dark:border-primary-700; }
 .accordion-item-content { @apply px-5 py-4 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700 last:border-b-0; }
 .accordion-content-arrow { @apply mr-3 h-3 w-3 text-gray-900 transition-transform duration-200 dark:text-white; }

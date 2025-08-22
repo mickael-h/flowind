@@ -45,7 +45,6 @@ export const accordionStyles = {
       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
       transition-colors duration-200
       flex items-center justify-between
-      group
     `
       .replace(/\s+/g, ' ')
       .trim(),

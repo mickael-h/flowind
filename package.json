@@ -34,18 +34,17 @@
       "import": "./dist/styles/index.js",
       "types": "./dist/styles/index.d.ts"
     },
-    "./theme.css": "./src/tailwind-theme.css"
+    "./theme.css": "./dist/tailwind-theme.css"
   },
   "files": [
     "dist",
-    "src/tailwind-theme.css",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "dev": "vite dev --host 0.0.0.0",
     "build": "npm run build:components",
-    "build:components": "svelte-package --input src/lib --output dist --preserve-output && rm -rf dist/components/layout dist/components/showcase",
+    "build:components": "npm run generate-styles && svelte-package --input src/lib --output dist --preserve-output && rm -rf dist/components/layout dist/components/showcase && mkdir -p dist/lib/styles && cp dist/styles/components.css dist/lib/styles/ && cp src/tailwind-theme.css dist/",
     "generate-styles": "node scripts/generate-component-styles.js",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
