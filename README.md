@@ -426,10 +426,10 @@ import {
 } from 'flowind-design-system';
 
 console.log(buttonStyles.variants.primary);
-// Output: '!bg-primary-600 !text-white hover:!bg-primary-700 ...'
+// Output: 'bg-primary-600 text-white hover:bg-primary-700 ...'
 
 console.log(tableStyles.variants.default);
-// Output: '!bg-transparent !border-0 !shadow-none !rounded-none'
+// Output: 'bg-transparent border-0 shadow-none rounded-none'
 ```
 
 ## 🤝 Contributing
